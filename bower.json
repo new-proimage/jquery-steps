@@ -24,8 +24,8 @@
     },
     "license": "MIT",
     "main": [
-        "build/jquery.steps.js",
-        "demo/css/jquery.steps.css"
+        "style/jquery.less",
+        "build/jquery.steps.js"
     ],
     "ignore": [
         "**/.*",

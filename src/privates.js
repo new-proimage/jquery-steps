@@ -726,25 +726,28 @@ function paginationClickHandler(event)
         options = getOptions(wizard),
         state = getState(wizard),
         href = anchor.attr("href");
-
+    var actionsElem = wizard.find(".actions")[0];
+    var lastPointerEvents = actionsElem.style.pointerEvents;
+    actionsElem.style.pointerEvents = 'none';
     switch (href.substring(href.lastIndexOf("#") + 1))
     {
-        case "cancel":
-            cancel(wizard);
-            break;
+      case "cancel":
+        cancel(wizard);
+        break;
 
-        case "finish":
-            finishStep(wizard, state);
-            break;
+      case "finish":
+        finishStep(wizard, state);
+        break;
 
-        case "next":
-            goToNextStep(wizard, options, state);
-            break;
+      case "next":
+        goToNextStep(wizard, options, state);
+        break;
 
-        case "previous":
-            goToPreviousStep(wizard, options, state);
-            break;
+      case "previous":
+        goToPreviousStep(wizard, options, state);
+        break;
     }
+    actionsElem.style.pointerEvents = lastPointerEvents;
 }
 
 /**

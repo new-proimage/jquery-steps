@@ -1,6 +1,6 @@
 /*! 
- * jQuery Steps v1.1.0 - 09/04/2014
- * Copyright (c) 2014 Rafael Staib (http://www.jquery-steps.com)
+ * jQuery Steps v1.1.0 - 05/27/2015
+ * Copyright (c) 2015 Rafael Staib (http://www.jquery-steps.com)
  * Licensed under MIT http://www.opensource.org/licenses/MIT
  */
 ;(function ($, undefined)
@@ -786,25 +786,28 @@ function paginationClickHandler(event)
         options = getOptions(wizard),
         state = getState(wizard),
         href = anchor.attr("href");
-
+    var actionsElem = wizard.find(".actions")[0];
+    var lastPointerEvents = actionsElem.style.pointerEvents;
+    actionsElem.style.pointerEvents = 'none';
     switch (href.substring(href.lastIndexOf("#") + 1))
     {
-        case "cancel":
-            cancel(wizard);
-            break;
+      case "cancel":
+        cancel(wizard);
+        break;
 
-        case "finish":
-            finishStep(wizard, state);
-            break;
+      case "finish":
+        finishStep(wizard, state);
+        break;
 
-        case "next":
-            goToNextStep(wizard, options, state);
-            break;
+      case "next":
+        goToNextStep(wizard, options, state);
+        break;
 
-        case "previous":
-            goToPreviousStep(wizard, options, state);
-            break;
+      case "previous":
+        goToPreviousStep(wizard, options, state);
+        break;
     }
+    actionsElem.style.pointerEvents = lastPointerEvents;
 }
 
 /**
