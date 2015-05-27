@@ -270,6 +270,7 @@
 {
     background: #eee;
     color: #aaa;
+    pointer-events: none;
 }
 
 .wizard > .loading
